@@ -3,20 +3,20 @@ import { ArrowRight } from 'lucide-react'
 
 const exampleMessages = [
   {
-    heading: 'What is OpenAI o1?',
-    message: 'What is OpenAI o1?'
+    heading: 'Best computer science university',
+    message: 'Best computer science university'
   },
   {
-    heading: 'Why is Nvidia growing rapidly?',
-    message: 'Why is Nvidia growing rapidly?'
+    heading: 'Pros and cons of majoring in medicine?',
+    message: 'Pros and cons of majoring in medicine?'
   },
   {
-    heading: 'How does the Vercel AI SDK work?',
-    message: 'How does the Vercel AI SDK work?'
+    heading: 'Transferring in mechanical engineering from community college to Standford',
+    message: 'Transferring in mechanical engineering from community college to Standford'
   },
   {
-    heading: 'Tesla vs Rivian',
-    message: 'Tesla vs Rivian'
+    heading: 'What does UC Berkeley like for freshman admissions?',
+    message: 'What does UC Berkeley like for freshman admissions?'
   }
 ]
 export function EmptyScreen({

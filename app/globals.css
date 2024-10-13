@@ -66,6 +66,18 @@
   }
 }
 
+.my-counselor-header {
+  text-align: center;
+  padding: 20px;
+  background-color: #ffffff;
+}
+
+.my-counselor-header h1 {
+  color: #333;
+  font-size: 2rem;
+}
+
+
 @layer base {
   * {
     @apply border-border;

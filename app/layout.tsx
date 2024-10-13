@@ -14,7 +14,7 @@ const fontSans = FontSans({
   variable: '--font-sans'
 })
 
-const title = 'Morphic'
+const title = 'Morphic-Counselor'
 const description =
   'A fully open-source AI-powered answer engine with a generative UI.'
 
@@ -58,6 +58,9 @@ export default function RootLayout({
           <AppStateProvider>
             <Header />
             {children}
+            <header className="my-counselor-header">
+              <h1>My Counselor</h1>
+            </header>
             <Sidebar />
             <Footer />
             <Toaster />
