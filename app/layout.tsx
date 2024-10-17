@@ -1,51 +1,33 @@
-import type { Metadata, Viewport } from 'next'
+"use client"; // Add this at the very top of the file
+
 import { Inter as FontSans } from 'next/font/google'
 import './globals.css'
 import { cn } from '@/lib/utils'
 import { ThemeProvider } from '@/components/theme-provider'
 import Header from '@/components/header'
-import Footer from '@/components/footer'
+import { QuestionSubmission } from '@/components/hide-header'
 import { Sidebar } from '@/components/sidebar'
 import { Toaster } from '@/components/ui/sonner'
 import { AppStateProvider } from '@/lib/utils/app-state'
+import { useState } from 'react'
+import { metadata } from './metadata' 
 
 const fontSans = FontSans({
   subsets: ['latin'],
   variable: '--font-sans'
 })
 
-const title = 'Morphic-Counselor'
-const description =
-  'A fully open-source AI-powered answer engine with a generative UI.'
-
-export const metadata: Metadata = {
-  metadataBase: new URL('https://morphic.sh'),
-  title,
-  description,
-  openGraph: {
-    title,
-    description
-  },
-  twitter: {
-    title,
-    description,
-    card: 'summary_large_image',
-    creator: '@miiura'
-  }
-}
-
-export const viewport: Viewport = {
-  width: 'device-width',
-  initialScale: 1,
-  minimumScale: 1,
-  maximumScale: 1
-}
-
 export default function RootLayout({
   children
 }: Readonly<{
   children: React.ReactNode
 }>) {
+  const [isQuestionAsked, setIsQuestionAsked] = useState(false);
+
+  const handleQuestionSubmit = () => {
+    setIsQuestionAsked(true); // Hide the header after a question is asked
+  };
+
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={cn('font-sans antialiased', fontSans.variable)}>
@@ -57,12 +39,18 @@ export default function RootLayout({
         >
           <AppStateProvider>
             <Header />
-            {children}
-            <header className="my-counselor-header">
-              <h1>My Counselor</h1>
-            </header>
+            {}
+            {!isQuestionAsked && (
+              <header className="my-counselor-header">
+                <h1>My Counselor</h1>
+              </header>
+            )}
+            <main>
+              {}
+              <QuestionSubmission submitMessage={handleQuestionSubmit} />
+              {children}
+            </main>
             <Sidebar />
-            <Footer />
             <Toaster />
           </AppStateProvider>
         </ThemeProvider>

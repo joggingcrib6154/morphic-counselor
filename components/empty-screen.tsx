@@ -11,8 +11,8 @@ const exampleMessages = [
     message: 'Pros and cons of majoring in medicine?'
   },
   {
-    heading: 'Transferring in mechanical engineering from community college to Standford',
-    message: 'Transferring in mechanical engineering from community college to Standford'
+    heading: 'Transferring in mechanical engineering from community college to Stanford',
+    message: 'Transferring in mechanical engineering from community college to Stanford'
   },
   {
     heading: 'What does UC Berkeley like for freshman admissions?',
@@ -34,7 +34,7 @@ export function EmptyScreen({
             <Button
               key={index}
               variant="link"
-              className="h-auto p-0 text-base"
+              className="h-auto p-0 text-md text-white-600 font-semibold"
               name={message.message}
               onClick={async () => {
                 submitMessage(message.message)
