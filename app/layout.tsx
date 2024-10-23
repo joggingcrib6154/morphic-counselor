@@ -1,4 +1,4 @@
-"use client"; // Add this at the very top of the file
+'use client'
 
 import { Inter as FontSans } from 'next/font/google'
 import './globals.css'
@@ -10,7 +10,6 @@ import { Sidebar } from '@/components/sidebar'
 import { Toaster } from '@/components/ui/sonner'
 import { AppStateProvider } from '@/lib/utils/app-state'
 import { useState } from 'react'
-import { metadata } from './metadata' 
 
 const fontSans = FontSans({
   subsets: ['latin'],
@@ -22,11 +21,11 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode
 }>) {
-  const [isQuestionAsked, setIsQuestionAsked] = useState(false);
+  const [isQuestionAsked, setIsQuestionAsked] = useState(false)
 
   const handleQuestionSubmit = () => {
-    setIsQuestionAsked(true); // Hide the header after a question is asked
-  };
+    setIsQuestionAsked(true) // Set state to hide "My Counselor" header
+  }
 
   return (
     <html lang="en" suppressHydrationWarning>
@@ -38,18 +37,29 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <AppStateProvider>
-            <Header />
-            {}
+            {/* Pass down the onReload prop if needed */}
+            <Header
+              onReload={function (): void {
+                throw new Error('Function not implemented.')
+              }}
+            />
+
+            {/* Conditionally render "My Counselor" header */}
             {!isQuestionAsked && (
               <header className="my-counselor-header">
                 <h1>My Counselor</h1>
               </header>
             )}
+
             <main>
-              {}
+              {/* Render QuestionSubmission component */}
               <QuestionSubmission submitMessage={handleQuestionSubmit} />
+
+              {/* Main page content */}
               {children}
             </main>
+
+            {/* Sidebar and Toaster */}
             <Sidebar />
             <Toaster />
           </AppStateProvider>
