@@ -8,6 +8,7 @@ import { cn } from '@/lib/utils'
 
 type HistoryItemProps = {
   chat: Chat
+  onClick: () => void
 }
 
 const formatDateWithTime = (date: Date | string) => {

@@ -17,7 +17,12 @@ export const Header: React.FC<{ onReload: () => void }> = ({ onReload }) => {
         </a>
       </div>
       <div className="flex items-center gap-2">
-        <HistoryContainer location="header" />
+        <HistoryContainer
+          location="header"
+          onConversationSelect={function (conversationId: string): void {
+            throw new Error('Function not implemented.')
+          }}
+        />
         <button
           className="reload-button"
           onClick={onReload}

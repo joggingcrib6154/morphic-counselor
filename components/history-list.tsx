@@ -6,14 +6,17 @@ import { ClearHistory } from './clear-history'
 
 type HistoryListProps = {
   userId?: string
+  onConversationSelect: (chatId: string) => void
 }
 
 const loadChats = cache(async (userId?: string) => {
   return await getChats(userId)
 })
 
-// Start of Selection
-export async function HistoryList({ userId }: HistoryListProps) {
+export async function HistoryList({
+  userId,
+  onConversationSelect
+}: HistoryListProps) {
   const chats = await loadChats(userId)
 
   return (
@@ -25,7 +28,14 @@ export async function HistoryList({ userId }: HistoryListProps) {
           </div>
         ) : (
           chats?.map(
-            (chat: Chat) => chat && <HistoryItem key={chat.id} chat={chat} />
+            (chat: Chat) =>
+              chat && (
+                <HistoryItem
+                  key={chat.id}
+                  chat={chat}
+                  onClick={() => onConversationSelect(chat.id)}
+                />
+              )
           )
         )}
       </div>
