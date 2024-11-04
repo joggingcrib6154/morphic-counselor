@@ -24,7 +24,7 @@ export default function RootLayout({
   const [isQuestionAsked, setIsQuestionAsked] = useState(false)
 
   const handleQuestionSubmit = () => {
-    setIsQuestionAsked(true) // Set state to hide "My Counselor" header
+    setIsQuestionAsked(true)
   }
 
   return (
@@ -37,29 +37,23 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <AppStateProvider>
-            {/* Pass down the onReload prop if needed */}
             <Header
               onReload={function (): void {
                 throw new Error('Function not implemented.')
               }}
             />
 
-            {/* Conditionally render "My Counselor" header */}
             {!isQuestionAsked && (
               <header className="my-counselor-header">
-                <h1>My Counselor</h1>
+                <h1>My EdCounselor</h1>
               </header>
             )}
 
             <main>
-              {/* Render QuestionSubmission component */}
               <QuestionSubmission submitMessage={handleQuestionSubmit} />
 
-              {/* Main page content */}
               {children}
             </main>
-
-            {/* Sidebar and Toaster */}
             <Sidebar />
             <Toaster />
           </AppStateProvider>
