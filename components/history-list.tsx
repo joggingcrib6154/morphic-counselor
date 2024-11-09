@@ -5,19 +5,15 @@ import { getChats } from '@/lib/actions/chat'
 import { ClearHistory } from './clear-history'
 
 type HistoryListProps = {
-  userId?: string
   onConversationSelect: (chatId: string) => void
 }
 
-const loadChats = cache(async (userId?: string) => {
-  return await getChats(userId)
+const loadChats = cache(async () => {
+  return await getChats()
 })
 
-export async function HistoryList({
-  userId,
-  onConversationSelect
-}: HistoryListProps) {
-  const chats = await loadChats(userId)
+export async function HistoryList({ onConversationSelect }: HistoryListProps) {
+  const chats = await loadChats()
 
   return (
     <div className="flex flex-col flex-1 space-y-3 h-full">
@@ -27,7 +23,7 @@ export async function HistoryList({
             No search history
           </div>
         ) : (
-          chats?.map(
+          chats.map(
             (chat: Chat) =>
               chat && (
                 <HistoryItem

@@ -19,14 +19,10 @@ export const Header: React.FC<{ onReload: () => void }> = ({ onReload }) => {
           <span className="sr-only">Morphic</span>
         </a>
       </div>
-
-      {/* History arrow on the top right */}
       <div className="flex items-center justify-end flex-1">
         <HistoryContainer
           location="header"
-          onConversationSelect={(conversationId: string) => {
-            throw new Error('Function not implemented.')
-          }}
+          onConversationSelect={(conversationId: string) => {}}
         />
       </div>
     </header>
