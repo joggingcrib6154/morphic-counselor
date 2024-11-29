@@ -1,33 +1,31 @@
 import React from 'react'
 // import { ModeToggle } from './mode-toggle';
-import { IconLogo } from './ui/icons'
 import { cn } from '@/lib/utils'
 import HistoryContainer from './history-container'
 
 export const Header: React.FC<{ onReload: () => void }> = ({ onReload }) => {
   return (
     <header
-      className="fixed w-full p-1 md:p-2 flex justify-between items-start z-10 backdrop-blur md:backdrop-blur-none bg-background/80 md:bg-transparent"
-      style={{ top: '20px' }}
+      className="fixed w-full p-1 md:p-2 flex items-center z-10 backdrop-blur md:backdrop-blur-none bg-background/80 md:bg-transparent"
+      style={{ top: '10px', left: '10px' }}
     >
       <div className="flex-1">
         <a href="/">
-          <IconLogo className={cn('w-5 h-5')} />
+          <img
+            src="/images/logo.png"
+            alt="MyEDCounselor Logo"
+            className={cn('w-8 h-8')}
+          />
           <span className="sr-only">Morphic</span>
         </a>
       </div>
-      <div className="flex items-center gap-2">
+      <div className="flex items-center justify-end flex-1">
         <HistoryContainer
           location="header"
           onConversationSelect={function (conversationId: string): void {
             throw new Error('Function not implemented.')
           }}
         />
-        <button
-          className="reload-button"
-          onClick={onReload}
-          style={{ marginTop: '0px' }}
-        ></button>
       </div>
     </header>
   )
