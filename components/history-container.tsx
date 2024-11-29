@@ -4,19 +4,22 @@ import { HistoryList } from './history-list'
 
 type HistoryContainerProps = {
   location: 'sidebar' | 'header'
-  onConversationSelect: (conversationId: string) => void
+  onConversationSelect: (conversationId: string) => void // Add this callback prop
 }
 
-const HistoryContainer: React.FC<HistoryContainerProps> = ({
+const HistoryContainer: React.FC<HistoryContainerProps> = async ({
   location,
-  onConversationSelect
+  onConversationSelect // Get the prop here
 }) => {
   return (
     <div
       className={location === 'header' ? 'block sm:hidden' : 'hidden sm:block'}
     >
       <History location={location}>
-        <HistoryList onConversationSelect={onConversationSelect} />
+        <HistoryList
+          userId="anonymous"
+          onConversationSelect={onConversationSelect}
+        />
       </History>
     </div>
   )
