@@ -46,7 +46,7 @@ export function ClearHistory({ empty }: ClearHistoryProps) {
             onClick={event => {
               event.preventDefault()
               startTransition(async () => {
-                const result = await clearChats() // no user-specific handling
+                const result = await clearChats()
                 if (result?.error) {
                   toast.error(result.error)
                 } else {

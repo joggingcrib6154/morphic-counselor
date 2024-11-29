@@ -8,7 +8,6 @@ export const Header: React.FC<{ onReload: () => void }> = ({ onReload }) => {
       className="fixed w-full p-1 md:p-2 flex items-center z-10 backdrop-blur md:backdrop-blur-none bg-background/80 md:bg-transparent"
       style={{ top: '10px', left: '10px' }}
     >
-      {/* Logo on the top left */}
       <div className="flex-1">
         <a href="/">
           <img
@@ -19,10 +18,12 @@ export const Header: React.FC<{ onReload: () => void }> = ({ onReload }) => {
           <span className="sr-only">Morphic</span>
         </a>
       </div>
-      <div className="flex items-center justify-end flex-1">
+      <div className="flex items-center gap-2">
         <HistoryContainer
           location="header"
-          onConversationSelect={(conversationId: string) => {}}
+          onConversationSelect={function (conversationId: string): void {
+            throw new Error('Function not implemented.')
+          }}
         />
       </div>
     </header>

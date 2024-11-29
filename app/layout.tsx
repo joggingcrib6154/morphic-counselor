@@ -54,7 +54,7 @@ export default function RootLayout({
 
               {children}
             </main>
-            <Sidebar />
+            {/*<Sidebar />*/}
             <Toaster />
           </AppStateProvider>
         </ThemeProvider>

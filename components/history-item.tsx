@@ -6,11 +6,13 @@ import { usePathname } from 'next/navigation'
 import { Chat } from '@/lib/types'
 import { cn } from '@/lib/utils'
 
+// Types for History Item
 type HistoryItemProps = {
   chat: Chat
   onClick: () => void
 }
 
+// Function to format date
 const formatDateWithTime = (date: Date | string) => {
   const parsedDate = new Date(date)
   const now = new Date()
@@ -49,6 +51,7 @@ const formatDateWithTime = (date: Date | string) => {
   }
 }
 
+// HistoryItem Component
 const HistoryItem: React.FC<HistoryItemProps> = ({ chat }) => {
   const pathname = usePathname()
   const isActive = pathname === chat.path
