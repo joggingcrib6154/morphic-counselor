@@ -10,6 +10,7 @@ import { Sidebar } from '@/components/sidebar'
 import { Toaster } from '@/components/ui/sonner'
 import { AppStateProvider } from '@/lib/utils/app-state'
 import { useState } from 'react'
+import { Analytics } from "@vercel/analytics/react"
 
 const fontSans = FontSans({
   subsets: ['latin'],
